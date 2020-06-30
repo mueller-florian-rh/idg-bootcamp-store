@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { translations, translationChunksConfig } from '@spartacus/assets';
-import { B2cStorefrontModule } from '@spartacus/storefront';
+import {B2cStorefrontModule} from '@spartacus/storefront';
+import {ProductComparisonModule} from "./product-comparison/product-comparison.module";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { B2cStorefrontModule } from '@spartacus/storefront';
       backend: {
         occ: {
           baseUrl: 'https://localhost:9002',
-          prefix: '/rest/v2/'
+          prefix: '/occ/v2/'
         }
       },
       context: {
@@ -30,7 +31,8 @@ import { B2cStorefrontModule } from '@spartacus/storefront';
       features: {
         level: '2.0'
       }
-    })
+    }),
+    ProductComparisonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

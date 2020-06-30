@@ -1,0 +1,30 @@
+<div class="product-comparison-table">
+  <div *ngIf="canShowCompareView()">
+    <table class="table">
+      <tr>
+        <th scope="col">Product name</th>
+        <ng-container *ngFor="let observableproduct of products">
+          <th scope="col" *ngIf="observableproduct | async as product"><a
+            [routerLink]="{ cxRoute: 'product', params: product } | cxUrl"
+            class="cx-product-image-container"
+            tabindex="-1"
+
+          >{{ product.name }} </a></th>
+        </ng-container>
+      </tr>
+      <tr>
+        <th scope="row">Image</th>
+        <ng-container *ngFor="let observableproduct of products">
+          <td *ngIf="observableproduct | async as product"> <cx-media [container]="product.images?.PRIMARY"></cx-media></td>
+        </ng-container>
+      </tr>
+      <tr>
+        <th scope="row">Product description</th>
+        <ng-container *ngFor="let observableproduct of products">
+          <td *ngIf="observableproduct | async as product"> {{ product.summary }}</td>
+        </ng-container>
+      </tr>
+    </table>
+  </div>
+  <div *ngIf="!canShowCompareView()">No product for comparison selected.</div>
+</div>

@@ -1,0 +1,26 @@
+<ng-template [cxOutletRef]="pdpoutlets.SUMMARY" cxOutletPos="after" let-model>
+
+
+  <button *ngIf="canAddProduct(model.product.code)"
+    class="btn btn-primary btn-block"
+    (click)="addProduct(model.product.code)">Add to comparison</button>
+
+  <button *ngIf="isProductInComparison(model.product.code)"
+          class="btn btn-primary btn-block"
+          (click)="removeProduct(model.product.code)">
+    Remove from comparison</button>
+
+  <a [routerLink]="{ cxRoute: 'compare' } | cxUrl"
+     *ngIf="canShowCompareView() && isProductInComparison(model.product.code)">
+    Compare this and {{ getNumberOfProducts() - 1 }} more selected products
+  </a>
+
+</ng-template>
+
+<ng-template cxOutletRef="ProductListSlot" cxOutletPos="before" >
+  <a [routerLink]="{ cxRoute: 'compare' } | cxUrl"
+     *ngIf="canShowCompareView()">
+    Compare {{ getNumberOfProducts() }} selected products
+  </a>
+</ng-template>
+
