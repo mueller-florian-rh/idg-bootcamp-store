@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { translations, translationChunksConfig } from '@spartacus/assets';
 import { B2cStorefrontModule } from '@spartacus/storefront';
+import {ProductComparisonModule} from "./product-comparison/product-comparison.module";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { B2cStorefrontModule } from '@spartacus/storefront';
       features: {
         level: '2.0'
       }
-    })
+    }),
+    ProductComparisonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
