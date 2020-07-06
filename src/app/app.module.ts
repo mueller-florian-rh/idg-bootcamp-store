@@ -14,13 +14,14 @@ import { B2cStorefrontModule } from '@spartacus/storefront';
     B2cStorefrontModule.withConfig({
       backend: {
         occ: {
-          baseUrl: 'https://localhost:9002',
+          baseUrl: 'https://api.c39j2-walkersde1-d4-public.model-t.cc.commerce.ondemand.com',
           prefix: '/rest/v2/'
         }
       },
       context: {
         currency: ['USD'],
         language: ['en'],
+        baseSite: ['electronics-spa']
       },
       i18n: {
         resources: translations,
