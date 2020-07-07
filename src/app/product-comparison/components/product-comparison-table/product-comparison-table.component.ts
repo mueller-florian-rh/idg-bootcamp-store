@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
+import {Product, ProductService} from "@spartacus/core";
+import {ProductCompareService} from "../../service/product-compare.service";
 
 @Component({
   selector: 'app-product-comparison-table',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComparisonTableComponent implements OnInit {
 
-  constructor() { }
+  products: Array<Observable<Product>> = new Array<Observable<Product>>();
 
-  ngOnInit(): void {
+  constructor(protected productComparisonService: ProductCompareService, protected productService: ProductService) {
   }
 
+  canShowCompareView(): boolean {
+    return this.productComparisonService.canShowCompareView();
+  }
+
+  ngOnInit(): void {
+    for (let productCode of this.productComparisonService.getProductCodes()) {
+      this.products.push(this.productService.get(productCode))
+    }
+  }
 }

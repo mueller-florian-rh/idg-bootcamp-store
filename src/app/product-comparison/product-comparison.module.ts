@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ProductComparisonOutletsComponent} from './components/product-comparison-outlets/product-comparison-outlets.component';
-import {CmsPageGuard, OutletRefModule} from "@spartacus/storefront";
+import {CmsPageGuard, MediaModule, OutletRefModule} from "@spartacus/storefront";
 import {ProductComparisonTableComponent} from './components/product-comparison-table/product-comparison-table.component';
 import {ConfigModule, UrlModule} from "@spartacus/core";
 import {RouterModule, Routes} from "@angular/router";
@@ -33,7 +33,8 @@ export const compareRoutes: Routes =
     CommonModule,
     OutletRefModule,
     UrlModule,
-    RouterModule
+    RouterModule,
+    MediaModule
   ]
 })
 export class ProductComparisonModule {
